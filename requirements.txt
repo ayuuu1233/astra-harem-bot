@@ -1,0 +1,8 @@
+python-telegram-bot[webhooks]==20.7
+fastapi
+uvicorn[standard]
+SQLAlchemy
+psycopg2-binary
+python-dotenv
+redis
+apscheduler
