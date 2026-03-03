@@ -3,6 +3,7 @@ from app.config import settings
 from app.handlers.start import start_handler
 from app.handlers.drop import drop_handler
 from app.handlers.harem import harem_handler
+from app.handlers.sell import sell_handler
 
 def create_bot():
     application = (
@@ -14,5 +15,6 @@ def create_bot():
     application.add_handler(start_handler())
     application.add_handler(drop_handler())
     application.add_handler(harem_handler())
+    application.add_handler(sell_handler())
 
     return application
