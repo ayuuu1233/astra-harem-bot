@@ -31,22 +31,19 @@ def drop_character(telegram_id: int):
 
     rarity = choose_rarity()
 
-    # Celestial unique guard
+    # Celestial uniqueness check
     if rarity == "Celestial":
         existing = db.query(Character).filter_by(rarity="Celestial").first()
         if existing:
             rarity = "Legendary"
 
-    character = (
-        db.query(Character)
-        .filter_by(rarity=rarity)
-        .order_by(random.random())
-        .first()
-    )
+    characters = db.query(Character).filter_by(rarity=rarity).all()
 
-    if not character:
+    if not characters:
         db.close()
         return None
+
+    character = random.choice(characters)
 
     inventory_item = db.query(Inventory).filter_by(
         user_id=user.id,
